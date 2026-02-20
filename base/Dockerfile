@@ -4,13 +4,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update && apt-get install -y build-essential git curl m4 pkg-config \
-    unzip libgmp-dev python3 gh
+    unzip libgmp-dev python3 gh sudo
 
 # Install opam
 RUN echo "" | bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
 
 # Create a user
-RUN useradd -m ocaml
+RUN useradd -m ocaml && \
+    mkdir -p /etc/sudoers.d && \
+    echo "ocaml ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ocaml && \
+    chmod 0440 /etc/sudoers.d/ocaml
 USER ocaml
 WORKDIR /home/ocaml
 
