@@ -5,11 +5,11 @@ RUN opam switch create 5.3 ocaml-base-compiler.5.3.0
 
 # CRITICAL FOR CI: This ensures 'dune', 'ocamlc', etc. are always in the PATH
 # without needing to run 'opam exec' every time.
-ENV OPAMROOT="/home/ocaml/.opam"
-ENV OPAM_SWITCH_PREFIX="/home/ocaml/.opam/5.3"
-ENV CAML_LD_LIBRARY_PATH="/home/ocaml/.opam/5.3/lib/stublibs"
+ENV OPAMROOT="/root/.opam"
+ENV OPAM_SWITCH_PREFIX="/root/.opam/5.3"
+ENV CAML_LD_LIBRARY_PATH="/root/.opam/5.3/lib/stublibs"
 ENV OPAMCONFIRMLEVEL=unsafe-yes
-ENV PATH="/home/ocaml/.opam/5.3/bin:${PATH}"
+ENV PATH="/root/.opam/5.3/bin:${PATH}"
 
 # Pre-install Dune
 RUN opam install dune -y
