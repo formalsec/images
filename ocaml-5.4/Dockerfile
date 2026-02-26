@@ -12,7 +12,7 @@ ENV OPAMCONFIRMLEVEL=unsafe-yes
 ENV PATH="/root/.opam/5.4/bin:${PATH}"
 
 # Pre-install Dune
-RUN opam install dune -y
+RUN opam install dune ocamlformat -y
 
 ENTRYPOINT [ "opam", "exec", "--" ]
 CMD [ "bash" ]

@@ -11,8 +11,8 @@ ENV CAML_LD_LIBRARY_PATH="/root/.opam/4.14/lib/stublibs"
 ENV OPAMCONFIRMLEVEL=unsafe-yes
 ENV PATH="/root/.opam/4.14/bin:${PATH}"
 
-# Pre-install Dune
-RUN opam install dune -y
+# Pre-install Dune and ocamlformat
+RUN opam install dune ocamlformat -y
 
 ENTRYPOINT [ "opam", "exec", "--" ]
 CMD [ "bash" ]
