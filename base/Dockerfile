@@ -3,25 +3,11 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    git \
-    curl \
-    m4 \
-    pkg-config \
-    unzip \
-    libgmp-dev \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git curl m4 pkg-config unzip cmake ninja-build jq gh sudo patch rsync \
+    libgmp-dev libssl-dev zlib1g-dev libffi-dev \
     python3 python3-pip python3-venv \
-    gh \
-    sudo \
-    libssl-dev \
-    zlib1g-dev \
-    patch \
-    cmake \
-    ninja-build \
-    jq \
-    rsync \
-    libffi-dev
+    nodejs npm
 
 # Install opam
 RUN echo "" | bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
