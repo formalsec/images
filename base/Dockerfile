@@ -5,7 +5,7 @@ ENV OPAMROOTISOK=1
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential git curl m4 pkg-config unzip cmake ninja-build jq gh sudo patch rsync \
+    build-essential git curl m4 pkg-config unzip cmake ninja-build jq gh sudo patch rsync ssh \
     libgmp-dev libssl-dev zlib1g-dev libffi-dev \
     python3 python3-pip python3-venv
 
