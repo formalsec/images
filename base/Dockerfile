@@ -1,13 +1,16 @@
 FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV OPAMROOTISOK=1
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
     build-essential git curl m4 pkg-config unzip cmake ninja-build jq gh sudo patch rsync \
     libgmp-dev libssl-dev zlib1g-dev libffi-dev \
-    python3 python3-pip python3-venv \
-    nodejs npm
+    python3 python3-pip python3-venv
+
+# Install nodejs
+RUN apt-get update && apt-get install -y --no-install-recommends nodejs npm
 
 # Install opam
 RUN echo "" | bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
