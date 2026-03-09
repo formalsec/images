@@ -14,5 +14,5 @@ ENV PATH="/root/.opam/4.14/bin:${PATH}"
 # Pre-install Dune and ocamlformat
 RUN opam install dune ocamlformat -y
 
-ENTRYPOINT [ "opam", "exec", "--" ]
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 CMD [ "bash" ]

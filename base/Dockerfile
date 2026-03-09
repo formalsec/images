@@ -31,5 +31,8 @@ RUN opam remote set-url default https://github.com/ocaml/opam-repository.git \
 # Fix "dubious ownership" errors in CI by trusting all directories system-wide
 RUN git config --system --add safe.directory '*'
 
-ENTRYPOINT [ "opam", "exec", "--" ]
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 CMD [ "bash" ]
