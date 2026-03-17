@@ -24,9 +24,9 @@ RUN useradd -m ocaml && \
 # Initialize opam (without a switch yet) as root
 RUN opam init --reinit --bare --disable-sandboxing -y
 
-# Update remote to track ocaml/opam-repository
-RUN opam remote set-url default https://github.com/ocaml/opam-repository.git \
-    && opam update
+# We add opam.ocaml.org as primary remote and opam-repo with rank 2 for updated packages
+RUN opam remote set-url default https://opam.ocaml.org --set-default && \
+  opam remote add opam-repo https://github.com/ocaml/opam-repository.git --rank=2 --set-default
 
 # Fix "dubious ownership" errors in CI by trusting all directories system-wide
 RUN git config --system --add safe.directory '*'
