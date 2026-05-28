@@ -1,7 +1,7 @@
 FROM ghcr.io/formalsec/base
 
 # Create OCaml 5.4 switch
-RUN opam switch create 5.4 ocaml-base-compiler.5.4.0
+RUN opam switch create 5.4 ocaml-variants.5.4.1+options ocaml-option-flambda
 
 # CRITICAL FOR CI: This ensures 'dune', 'ocamlc', etc. are always in the PATH
 # without needing to run 'opam exec' every time.
