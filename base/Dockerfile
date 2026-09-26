@@ -2,6 +2,7 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV OPAMROOTISOK=1
+ENV OPAM_VERSION=2.5.1
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -13,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y --no-install-recommends nodejs npm
 
 # Install opam
-RUN echo "" | bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
+RUN echo "" | bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh) --version $OPAM_VERSION"
 
 # Create a user (optional, for non-CI use)
 RUN useradd -m ocaml && \
